@@ -10,14 +10,19 @@ import { v4 as uuid } from "uuid"
 
 @Entity("announcement")
 export class Announcement {
-
   @PrimaryColumn("uuid")
   readonly id: string
 
   @Column({
-    length: 20
+    length: 20,
   })
-  announcementType: string  
+  announcementType: string
+
+  @Column({
+    unique: true,
+    length: 7,
+  })
+  plate: string
 
   @Column({
     length: 150,
@@ -25,41 +30,40 @@ export class Announcement {
   title: string
 
   @Column({
-    type: "integer"
+    type: "integer",
   })
   year: number
 
   @Column({
-    type: "integer"
+    type: "integer",
   })
   km: number
 
   @Column({
-    type: "integer"
+    type: "integer",
   })
   price: number
-  
+
   @Column({
     length: 150,
   })
   description: string
 
   @Column({
-    length: 250
+    length: 250,
   })
   vehicleType: string
 
   @Column({
-    type: "boolean"
+    type: "boolean",
   })
   published: boolean
-  
+
   @CreateDateColumn()
   createdAt: Date
 
   @Column({ default: true })
   isActive: boolean
-
 
   // @OneToMany(() => Image, (image) => image.announcement, { eager: true })
   // images: Image[]
