@@ -1,12 +1,12 @@
-import "reflect-metadata"
 
-import "express-async-errors"
-import express, { Response, Request, NextFunction } from "express"
+import { Response, Request, NextFunction } from "express"
 import { AppError } from "./errors/appErros"
+import { appRoutes } from "./routes"
+import  express  from "express"
 
 const app = express()
 app.use(express.json())
-/*appRoutes(app)*/
+appRoutes(app)
 app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
   if (err instanceof AppError) {
     return res.status(err.statusCode).json({

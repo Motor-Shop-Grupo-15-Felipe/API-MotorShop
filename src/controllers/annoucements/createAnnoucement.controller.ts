@@ -8,17 +8,19 @@ export const annoucementCreateController = async (
   res: Response
 ) => {
   try {
-    const { name, description, owner_name, km, year, price, createdAt } =
+    const { title, description, vehicleType, km, year, price, published, announcementType, images } =
       req.body
 
     const newAnnoucement = await annoucementCreateService({
-      name,
+      title,
       description,
-      owner_name,
+      vehicleType,
       km,
       year,
       price,
-      createdAt,
+      published,
+      announcementType,
+      // images
     })
 
     return res.status(201).send(instanceToPlain(newAnnoucement))

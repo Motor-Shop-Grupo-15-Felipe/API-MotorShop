@@ -1,33 +1,36 @@
 import AppDataSource from "../../data-source"
 import { Announcement } from "../../entities/announcement.entity"
 import {
-  IAnnoucement,
-  IAnnoucementRequest,
+  IAnnouncement
 } from "../../interfaces/announcement"
 import { AppError } from "../../errors/appErros"
 
 export const annoucementCreateService = async ({
-  name,
-  description,
-  owner_name,
-  km,
+  announcementType,
+  title,
   year,
+  km,
   price,
-  createdAt
-}: IAnnoucementRequest): Promise<IAnnoucement> => {
+  description,
+  vehicleType,
+  published,
+  images,
+}: IAnnouncement): Promise<IAnnouncement> => {
   const annoucementRepository = AppDataSource.getRepository(Announcement)
 
   const newAnnoucement = new Announcement()
-  newAnnoucement.name = name
+  newAnnoucement.title = title
   newAnnoucement.description = description
-  newAnnoucement.owner_name = owner_name
+  newAnnoucement.announcementType = announcementType
   newAnnoucement.km = km
   newAnnoucement.year = year
   newAnnoucement.price = price
-  newAnnoucement.createdAt = createdAt
+  newAnnoucement.vehicleType = vehicleType
+  newAnnoucement.published = published
+  // newAnnoucement.images.push(images)
 
   const annoucementExist = await annoucementRepository.findOne({
-    where: { name: name },
+    where: { title },
   })
 
   if (annoucementExist) {
