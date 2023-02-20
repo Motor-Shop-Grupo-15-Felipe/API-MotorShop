@@ -7,7 +7,8 @@ export const annoucementDeleteController = async (
   res: Response
 ) => {
   try {
-    const id = req.annoucement.id
+
+    const id = req.params.id
     const annoucements = await annoucementDeleteService(id)
 
     return res.status(204).send({
