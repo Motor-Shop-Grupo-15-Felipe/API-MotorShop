@@ -3,7 +3,7 @@ import { Request, response, Response } from "express";
 import { announcementsById } from "../../services/annoucements/getByIdAnnouncements.service";
 
 
-export const listAnnoucementByIdController = async (req: Request, res: Response) => {
+export const listAnnouncementByIdController = async (req: Request, res: Response) => {
     
     const id: string = req.params.id
     const listAnnoucement = await announcementsById(id)

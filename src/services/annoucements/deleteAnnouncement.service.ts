@@ -1,8 +1,8 @@
-import AppDataSource from "../../data-source"
+import { AppDataSource } from "../../data-source"
 import { AppError } from "../../errors/appErros"
 import { Announcement } from "../../entities/announcement.entity"
 
-export const annoucementDeleteService = async (id: string) => {
+export const announcementDeleteService = async (id: string) => {
   const annoucementRepository = AppDataSource.getRepository(Announcement)
 
   const annoucements = await annoucementRepository.findOneBy({
