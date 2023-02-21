@@ -1,15 +1,15 @@
 import { Request, Response } from "express"
 import { AppError, handleError } from "../../errors/appErros"
-import { annoucementDeleteService } from "../../services/annoucements/deleteAnnoucement.services"
+import { announcementDeleteService } from "../../services/annoucements/deleteAnnoucement.services"
 
-export const annoucementDeleteController = async (
+export const announcementDeleteController = async (
   req: Request,
   res: Response
 ) => {
   try {
 
     const id = req.params.id
-    const annoucements = await annoucementDeleteService(id)
+    const annoucements = await announcementDeleteService(id)
 
     return res.status(204).send({
       message: "Annoucement deleted with success!",

@@ -1,23 +1,33 @@
 import { instanceToPlain } from "class-transformer"
 import { Request, Response } from "express"
 import { AppError, handleError } from "../../errors/appErros"
-import { annoucementCreateService } from "../../services/annoucements/createAnnoucement.services"
+import { announcementCreateService } from "../../services/annoucements/createAnnoucement.services"
 
-export const annoucementCreateController = async (
+export const announcementCreateController = async (
   req: Request,
   res: Response
 ) => {
   try {
-    const { title, description, vehicleType, km, year, price, published, announcementType, images } =
-      req.body
-
-    const newAnnoucement = await annoucementCreateService({
+    const {
       title,
       description,
       vehicleType,
       km,
       year,
       price,
+      plate,
+      published,
+      announcementType,
+    } = req.body
+
+    const newAnnoucement = await announcementCreateService({
+      title,
+      description,
+      vehicleType,
+      km,
+      year,
+      price,
+      plate,
       published,
       announcementType,
       // images

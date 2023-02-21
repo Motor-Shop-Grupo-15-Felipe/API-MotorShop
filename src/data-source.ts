@@ -1,28 +1,21 @@
 import { DataSource } from "typeorm"
-import "dotenv/config"
-import { User } from "./entities/users.entity"
-const nodeEnv = process.env.NODE_ENV
+require("dotenv").config()
 
-const AppDataSource = new DataSource(
-  nodeEnv === "production"
-    ? {
+export const AppDataSource =
+  process.env.NODE_ENV === "test"
+    ? new DataSource({
+        type: "sqlite",
+        database: ":memory:",
+        entities: ["src/entities/**/*.ts"],
+        synchronize: true,
+      })
+    : new DataSource({
         type: "postgres",
-        url: process.env.DATABASE_URL,
-        entities: ["src/entities/*.{js,ts}"],
-        migrations: ["src/migrations/*.{js,ts}"],
-      }
-    : {
-        type: "postgres",
-        host: process.env.DB_HOST,
+        host: "localhost",
         port: 5432,
         username: process.env.POSTGRES_USER,
         password: process.env.POSTGRES_PASSWORD,
         database: process.env.POSTGRES_DB,
-        logging: true,
-        synchronize: false,
-        entities: ["src/entities/*.ts"],
-        migrations: ["src/migrations/*.ts"],
-      }
-)
-
-export default AppDataSource
+        entities: ["src/entities/**/*.ts"],
+        migrations: ["src/migrations/**/*.ts"],
+      })
