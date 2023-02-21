@@ -6,6 +6,9 @@ declare global {
       annoucement: {
         id: string
       }
+      user:{
+        id:string
+      }
     }
   }
 }

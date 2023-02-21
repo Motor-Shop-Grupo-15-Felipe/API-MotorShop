@@ -1,6 +1,6 @@
 import { instanceToPlain } from "class-transformer";
 import { Request, response, Response } from "express";
-import { announcementsById } from "../../services/annoucements/getByIdAnnouncements.service";
+import { announcementsById } from "../../services/annoucements/getByIdAnnouncements.services";
 
 
 export const listAnnoucementByIdController = async (req: Request, res: Response) => {

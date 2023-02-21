@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import { AppError, handleError } from "../../errors/appErros"
-import { annoucementDeleteService } from "../../services/annoucements/deleteAnnoucement.service"
+import { annoucementDeleteService } from "../../services/annoucements/deleteAnnoucement.services"
 
 export const annoucementDeleteController = async (
   req: Request,

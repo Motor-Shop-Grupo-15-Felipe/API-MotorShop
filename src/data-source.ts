@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm"
 import "dotenv/config"
-/*import { User } from "./entities/user.entity"*/
+import { User } from "./entities/users.entity"
 const nodeEnv = process.env.NODE_ENV
 
 const AppDataSource = new DataSource(

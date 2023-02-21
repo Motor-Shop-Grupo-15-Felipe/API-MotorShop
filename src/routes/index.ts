@@ -1,5 +1,5 @@
 import { Express } from "express"
-import { routesAnnoucements } from "./announcement.routes"
+import { routesAnnoucements } from "./adds/announcement.routes"
 
 
 export const appRoutes = (app: Express) => {

@@ -1,7 +1,7 @@
 import { instanceToPlain } from "class-transformer"
 import { Request, Response } from "express"
 import { AppError, handleError } from "../../errors/appErros"
-import { annoucementCreateService } from "../../services/annoucements/createAnnoucement.service"
+import { annoucementCreateService } from "../../services/annoucements/createAnnoucement.services"
 
 export const annoucementCreateController = async (
   req: Request,

@@ -5,61 +5,59 @@ import {
   CreateDateColumn,
   OneToMany,
   JoinTable,
-} from "typeorm"
-import { v4 as uuid } from "uuid"
+} from "typeorm";
+import { v4 as uuidv4 } from "uuid";
 
 @Entity("announcement")
 export class Announcement {
-
   @PrimaryColumn("uuid")
-  readonly id: string
+  readonly id: string;
 
   @Column({
-    length: 20
+    length: 20,
   })
-  announcementType: string  
+  announcementType: string;
 
   @Column({
     length: 150,
   })
-  title: string
+  title: string;
 
   @Column({
-    type: "integer"
+    type: "integer",
   })
-  year: number
+  year: number;
 
   @Column({
-    type: "integer"
+    type: "integer",
   })
-  km: number
+  km: number;
 
   @Column({
-    type: "integer"
+    type: "integer",
   })
-  price: number
-  
+  price: number;
+
   @Column({
     length: 150,
   })
-  description: string
+  description: string;
 
   @Column({
-    length: 250
+    length: 250,
   })
-  vehicleType: string
+  vehicleType: string;
 
   @Column({
-    type: "boolean"
+    type: "boolean",
   })
-  published: boolean
-  
+  published: boolean;
+
   @CreateDateColumn()
-  createdAt: Date
+  createdAt: Date;
 
   @Column({ default: true })
-  isActive: boolean
-
+  isActive: boolean;
 
   // @OneToMany(() => Image, (image) => image.announcement, { eager: true })
   // images: Image[]
@@ -72,7 +70,7 @@ export class Announcement {
 
   constructor() {
     if (!this.id) {
-      this.id = uuid()
+      this.id = uuidv4();
     }
   }
 }
