@@ -39,6 +39,12 @@ export class Announcement {
   price: number;
 
   @Column({
+    unique:true,
+    length:7,
+  })
+  plate: string;
+
+  @Column({
     length: 150,
   })
   description: string;

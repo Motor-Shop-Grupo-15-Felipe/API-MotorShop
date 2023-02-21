@@ -16,4 +16,6 @@ export const usersRouter = () => {
     routes.patch("/:id", updateUserController ),
     routes.delete("/:id", deleteUserController)
 
+    return routes
+
 }
