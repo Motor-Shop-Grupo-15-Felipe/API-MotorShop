@@ -6,7 +6,8 @@ export interface IUser {
   cpf: string;
   date_of_birth: string;
   description: string;
-  //tipo_de_conta//
+  isBuyer:boolean;
+  isAdvertiser:boolean;
   password: string;
   created_at: Date;
 }
@@ -18,6 +19,8 @@ export interface IUserCreate {
   cpf: string;
   date_of_birth: string;
   description: string;
+  isBuyer:boolean;
+  isAdvertiser:boolean;
   password: string;
 }
 

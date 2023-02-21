@@ -32,9 +32,6 @@ export class User{
     @Column({type: "boolean"})
     isAdvertiser:boolean;
 
-    //@Column()
-    //type_of_user_account: string
-
     @Column()
     @Exclude()
     password:string 
