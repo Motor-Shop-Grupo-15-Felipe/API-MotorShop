@@ -8,8 +8,8 @@
 - [Express](https://expressjs.com/pt-br/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [TypeORM](https://typeorm.io/)
-<li>uuid</li>
-</ul>
+- [UUID](https://www.npmjs.com/package/uuid/)
+
 
  <h3>DIAGRAM OF RELATIONS:</h3>
 
