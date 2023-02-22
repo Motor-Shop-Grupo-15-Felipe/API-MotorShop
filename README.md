@@ -2,7 +2,7 @@
 
 <h2>API documentation</h2
 
-## MAIN TECNOLOGIES AND FRAMEWORKS:
+## MAIN TECNOLOGIES AND FRAMEWORKS
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [NodeJS](https://nodejs.org/en/)
@@ -871,4 +871,4 @@ Possible errors:
 
 
 
-[ Go back to the top of the page ](#main-tecnologies-and-frameworks:)
+[ Go back to the top of the page ](#main-tecnologies-and-frameworks)
