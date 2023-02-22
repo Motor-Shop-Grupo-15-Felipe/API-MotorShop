@@ -1,51 +1,65 @@
-import { Entity, Column, PrimaryColumn, CreateDateColumn, OneToOne } from "typeorm";
-import { Exclude } from "class-transformer";
-import { v4 as uuidv4 } from "uuid";
+import {
+  Entity,
+  Column,
+  PrimaryColumn,
+  CreateDateColumn,
+  OneToMany,
+  ManyToOne,
+  JoinColumn,
+} from "typeorm"
+import { Comment } from "./comment.entity"
+import { Address } from "./address.entity"
+import { Exclude } from "class-transformer"
+import { v4 as uuidv4 } from "uuid"
 
 @Entity("user")
+export class User {
+  @PrimaryColumn("uuid")
+  readonly id: string
 
-export class User{
-    @PrimaryColumn("uuid")
-    readonly id : string ;
-    
-    @Column()
-    name: string;
+  @Column()
+  name: string
 
-    @Column({unique:true})
-    email: string 
+  @Column({ unique: true })
+  email: string
 
-    @Column()
-    phone: string
+  @Column()
+  phone: string
 
-    @Column({unique:true,length:11})
-    cpf: string
+  @Column({ unique: true, length: 11 })
+  cpf: string
 
-    @Column()
-    date_of_birth: string
+  @Column()
+  date_of_birth: Date
 
-    @Column()
-    description: string
+  @Column()
+  description: string
 
-    @Column({type: "boolean"})
-    isBuyer: boolean;
-    
-    @Column({type: "boolean"})
-    isAdvertiser:boolean;
+  @Column()
+  isBuyer: boolean
 
-    @Column()
-    @Exclude()
-    password:string 
+  @Column()
+  isAdvertiser: boolean
 
-    @CreateDateColumn({ name: "created_at" })
-    createdAt: Date
+  @Column()
+  @Exclude()
+  password: string
 
-    //@OneToOne(() => Addresses  (address) => addresses.user, { eager: true })
+  @CreateDateColumn({ name: "created_at" })
+  createdAt: Date
 
-    constructor() {
-        if (!this.id) {
-          this.id = uuidv4();
-        }
-      }
+  @ManyToOne((type) => Address, (address) => address.user, {
+    eager: true,
+  })
+  @JoinColumn()
+  address: Address
 
+  @OneToMany((type) => Comment, (comment) => comment.user)
+  comments: Comment[]
 
+  constructor() {
+    if (!this.id) {
+      this.id = uuidv4()
+    }
+  }
 }
