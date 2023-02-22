@@ -23,7 +23,12 @@
 
 <h3>INSTALLING DEPENDENCIES:</h3>
 <ul>
-<li>After cloning the repository to your machine locally, run the code "yarn "</li>
+<li>After cloning the repository to your machine locally, run the code:</li>
+ 
+ ```shell
+yarn
+```
+ 
 </ul>
 
 <h3>SETTING AND RUNNING THE PROJECT LOCALLY:</h3>
