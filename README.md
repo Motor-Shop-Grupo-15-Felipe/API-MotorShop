@@ -34,7 +34,10 @@ yarn
 <h3>SETTING AND RUNNING THE PROJECT LOCALLY:</h3>
 <ul>
 <li>In your cloned project folder, create a copy of the file ".env.example" and its content, renaming to ".env" and fill in the relevant information</li>
-<li>Run the command "yarn typeorm migration:run -d src/data-source.ts" to execute the migrations</li>
+<li>Run the following command to execute the migrations</li>
+ ```shell
+yarn typeorm migration:run -d src/data-source.ts
+```
 <li>To run the server locally, execute the command "yarn dev"</li>
 </ul>
 
