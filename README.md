@@ -60,7 +60,7 @@ yarn dev
     </ul>
 </details>
 <details>
-  <summary>SESSIONS</summary>
+  <summary>[SESSIONS]</summary>
   <ul>
   <li>POST - /login</li>
   </ul>
