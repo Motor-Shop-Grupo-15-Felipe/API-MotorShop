@@ -4,6 +4,7 @@
 
 <h3>MAIN TECNOLOGIES AND FRAMEWORKS:</h3>
 
+- [Início Rápido](#2-início-rápido)
 - [TypeScript](https://www.typescriptlang.org/)
 - [NodeJS](https://nodejs.org/en/)
 - [Express](https://expressjs.com/pt-br/)
@@ -33,4 +34,4 @@
 <li>To run the server locally, execute the command "yarn dev"</li>
 </ul>
 
-[ Go back to the top od the page ](#tabela-de-conteúdos)
+[ Go back to the top of the page ](#tabela-de-conteúdos)
