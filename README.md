@@ -48,6 +48,8 @@ yarn dev
  
 </ul>
 
+---
+
 <h3>ENDPOINTS:</h3>
 <details>
   <summary>USERS</summary>
@@ -85,6 +87,7 @@ yarn dev
   <li>DELETE - /comment/:id</li>
   </ul>
 </details>
+<details>
 <summary>IMAGES</summary>
   <ul>
   <li>POST - /</li>
@@ -99,7 +102,7 @@ yarn dev
 
 ## 1. **Users**
 
-| HTTP Method   | Rota           | Description                                                |
+| HTTP Method   | Route          | Description                                                |
 |---------------|----------------|------------------------------------------------------------|
 | POST          | /users         | User creation                                              |
 | GET           | /users         | List all users                                             |
@@ -158,7 +161,6 @@ Content-type: application/json
     
 }
 ```
----
 
 Possible Errors:
 | Error code      | Description               |
@@ -207,7 +209,6 @@ EMPTY
     }
 ]
 ```
----
 
 Possible Errors:
 | Error code | Description |
@@ -256,7 +257,6 @@ EMPTY
     }
 ]
 ```
----
 
 Possible Errors:
 | Error code | Description |
@@ -310,6 +310,15 @@ Content-type: application/json
     }
 ]
 ```
+
+Possible errors:
+| Error code | Description |
+|----------------|-----------|
+| 401 Unauthorized | Invalid token |
+| 401 Unauthorized | Not the same user who is logged |
+| 401 Unauthorized | Can not change the user's id and/or email |
+| 404 Not Found    | User not found |
+
 ---
 
 <h4>Delete User by ID - DELETE</h4>
@@ -319,7 +328,7 @@ Content-type: application/json
 <h5>Request example -</h5>
 
 ```
-DELETE /users/:user_id
+DELETE /users/:id
 Host: 
 Authorization: Bearer Token
 Content-type: application/json
@@ -336,6 +345,15 @@ EMPTY
 ``` 
 204 No Content
 ```
+
+Possible errors:
+| Error code | Description |
+|----------------|-----------|
+| 401 Unauthorized | Invalid token |
+| 401 Unauthorized | Not the same user who is logged |
+| 404 Not Found    | User not found |
+
+---
 
 <h4>LogIn - POST</h4>
 
@@ -372,8 +390,468 @@ Content-type: application/json
 }
 ```
 
+Possible errors:
+| Error code | Description |
+|----------------|-----------|
+| 403 Forbidden  | Incorrect email or password |
+
+---
+
+## 2. **Ads**
+
+| HTTP Method   | Route          | Description                                                |
+|---------------|----------------|------------------------------------------------------------|
+| POST          | /ads           | AD creation                                              |
+| GET           | /ads           | List all ads                                             |
+| GET           | /ads/:id       | List a add using its ID as a parameter                    |
+| PATCH         | /ads/:id       | Updates a ad's information using its ID as a parameter |
+| DELETE        | /ads/:id       | Deletes a ad using its ID as a parameter                 |
+
+---
+
+<h4>AD Creation - POST</h4>
+
+`/ads`
+
+<h5>Request example -</h5>
+
+```
+POST /ads
+Host: 
+Authorization: Bearer Token
+Content-type: application/json
+
+```
+
+<h5>Request body -</h5>
+
+```json
+{    
+    "announcementType": "publicado",
+    "title": "Black Car 2018",
+    "year" : "2018"
+    "km" : "200"
+    "price": "200.000.00"
+    "plate" : "XVD-123"
+    "description": "I'm selling this 2018 black car...",
+    "plate" : "Hi! I'm Gabe and i..."
+    "vehicleType": "car",
+    "published" : true
+}
+```
+
+<h5>Response example -</h5>
+
+```
+201 Created
+```
+
+```json
+{
+    "id" : "xxxxxxx" (UUID),
+    "announcementType": "publicado",
+    "title": "Black Car 2018",
+    "year" : "2018",
+    "km" : "200",
+    "price": "200.000.00",
+    "plate" : "XVD-123",
+    "description": "I'm selling this 2018 black car...",
+    "plate" : "Hi! I'm Gabe and i...",
+    "vehicleType": "car",
+    "published" : true,
+    "createdAt": "Y/D/M TIME",
+    "isActive" : true
+    
+}
+```
+
+Possible Errors:
+| Error code      | Description               |
+|-----------------|---------------------------|
+| 400 Bad Request | Plate already being used  |
+
+---
+
+<h4>List all ADS - GET</h4>
+
+`/ads`
+
+<h5>Request example -</h5>
+
+```
+GET /ads
+Host: 
+Authorization: Bearer Token
+Content-type: application/json
+
+```
+
+<h5>Request body -</h5>
+
+```
+EMPTY
+
+```
+
+<h5>Response example -</h5>
+
+```
+200 OK
+```
+
+```json
+[
+  {
+    "id" : "xxxxxxx" (UUID),
+    "announcementType": "publicado",
+    "title": "Black Car 2018",
+    "year" : "2018",
+    "km" : "200",
+    "price": "200.000.00",
+    "plate" : "XVD-123",
+    "description": "I'm selling this 2018 black car...",
+    "plate" : "Hi! I'm Gabe and i...",
+    "vehicleType": "car",
+    "published" : true,
+    "createdAt": "Y/D/M TIME",
+    "isActive" : true
+    
+  },
+  {}
+]
+```
+
+Possible Errors:
+| Error code      | Description               |
+|-----------------|---------------------------|
+| 401 Unauthorized | Invalid token |
+
+---
+
+<h4> List AD by ID - GET</h4>
+
+`/ads/:id`
+
+<h5>Request example -</h5>
+
+```
+GET /ads/:id
+Host: 
+Authorization: Bearer Token
+Content-type: application/json
+```
+
+<h5>Request body -</h5>
+
+```
+EMPTY
+```
+
+<h5>Response example -</h5>
+
+```
+200 OK
+```
+
+```json
+[
+    {
+        "id" : "xxxxxxx" (UUID),
+        "announcementType": "publicado",
+        "title": "Black Car 2018",
+        "year" : "2018",
+        "km" : "200",
+        "price": "200.000.00",
+        "plate" : "XVD-123",
+        "description": "I'm selling this 2018 black car...",
+        "plate" : "Hi! I'm Gabe and i...",
+        "vehicleType": "car",
+        "published" : true,
+        "createdAt": "Y/D/M TIME",
+        "isActive" : true
+    }
+]
+```
+
+Possible Errors:
+| Error code | Description |
+|----------------|-----------|
+| 401 Unauthorized | Invalid token  |
+| 404 Not Found    | User not found |
+
+---
+
+<h4> Update AD by ID - PATCH</h4>
+
+`/ads/:id`
+
+<h5>Request example -</h5>
+
+```
+PATCH /ads/:id
+Host: 
+Authorization: Bearer Token
+Content-type: application/json
+```
+
+<h5>Request body -</h5>
+<p>Being able to update parcially or all ad's informations(except the ad's ID )</p>
+
+```json
+  { 
+       "price": "150.000.00",
+  }
+
+```
+
+<h5>Response example -</h5>
+
+```
+200 OK
+```
+
+```json
+[
+    {
+        "id" : "xxxxxxx" (UUID),
+        "announcementType": "publicado",
+        "title": "Black Car 2018",
+        "year" : "2018",
+        "km" : "200",
+        "price": "150.000.00",
+        "plate" : "XVD-123",
+        "description": "I'm selling this 2018 black car...",
+        "plate" : "Hi! I'm Gabe and i...",
+        "vehicleType": "car",
+        "published" : true,
+        "createdAt": "Y/D/M TIME",
+        "isActive" : true
+    }
+]
+```
+
+Possible errors:
+| Error code | Description |
+|----------------|-----------|
+| 401 Unauthorized | Invalid token |
+| 401 Unauthorized | Can not change the ad's ID |
+| 404 Not Found    | AD not found |
+
+---
+
+<h4>Delete AD by ID - DELETE</h4>
+
+`/ads/:id`
+
+<h5>Request example -</h5>
+
+```
+DELETE /ads/:id
+Host: 
+Authorization: Bearer Token
+Content-type: application/json
+```
+
+<h5>Request body -</h5>
+
+```
+EMPTY
+```
+
+<h5>Response example -</h5>
+
+``` 
+204 No Content
+```
+
+Possible errors:
+| Error code | Description |
+|----------------|-----------|
+| 401 Unauthorized | Invalid token |
+| 404 Not Found    | AD not found |
+
+---
+
+## 3. **Comments**
+
+| HTTP Method   | Route          | Description                                                |
+|---------------|----------------|------------------------------------------------------------|
+| POST          |            | Comment creation                                              |
+| GET           | /users/:id     | List a comment using its ID as a parameter                    |
+| PATCH         | /:id       | Updates a comment's information using its ID as a parameter |
+| DELETE        | /:id       | Deletes a comment using its ID as a parameter                 |
+
+---
+
+<h4>Comment creation - POST</h4>
+
+`/comment`
+
+<h5>Request example -</h5>
+
+```
+POST /comment/
+Host: 
+Authorization: Bearer Token
+Content-type: application/json
+
+```
+
+<h5>Request body -</h5>
+
+```json
+{    
+    "description": "I really like the price but..",
+    "tags" : "Cool"
+}
+```
+
+<h5>Response example -</h5>
+
+```
+201 Created
+```
+
+```json
+{
+    "id" : "xxxxxxx" (UUID),
+    "description": "I really like the price but..",
+    "tags" : "Cool"
+}
+```
+
+Possible Errors:
+| Error code      | Description               |
+|-----------------|---------------------------|
+| 404 Not found |  User not found |
+| 400 Bad request |  Missing description - "Make a comment" |
 
 
+---
+
+<h4> List Comment by ID - GET</h4>
+
+`/comment/users/:id`
+
+<h5>Request example -</h5>
+
+```
+GET /users/:id
+Host: 
+Authorization: Bearer Token
+Content-type: application/json
+```
+
+<h5>Request body -</h5>
+
+```
+EMPTY
+```
+
+<h5>Response example -</h5>
+
+```
+200 OK
+```
+
+```json
+[
+    {
+      "id" : "xxxxxxx" (UUID),
+      "description": "I really like the price but..",
+      "tags" : "Cool"
+    }
+]
+```
+
+Possible Errors:
+| Error code | Description |
+|----------------|-----------|
+| 401 Unauthorized | Invalid token  |
+| 404 Not Found    | Comment not found |
+
+---
+
+<h4> Update AD by ID - PATCH</h4>
+
+`/comment/:id`
+
+<h5>Request example -</h5>
+
+```
+PATCH /comment/:id
+Host: 
+Authorization: Bearer Token
+Content-type: application/json
+```
+
+<h5>Request body -</h5>
+<p>Being able to update parcially or all ad's informations(except the comment's ID )</p>
+
+```json
+  { 
+      "description": "I really like the price now!",
+  }
+
+```
+
+<h5>Response example -</h5>
+
+```
+200 OK
+```
+
+```json
+[
+   {
+      "id" : "xxxxxxx" (UUID),
+      "description": "I really like the price now!",
+      "tags" : "Cool"
+    }
+]
+```
+
+Possible errors:
+| Error code | Description |
+|----------------|-----------|
+| 401 Unauthorized | Invalid token |
+| 401 Unauthorized | Can not change the comment's ID |
+| 404 Not Found    | Comment not found |
+
+---
+
+<h4>Delete Comment by ID - DELETE</h4>
+
+`/comment/:id`
+
+<h5>Request example -</h5>
+
+```
+DELETE /comment/:id
+Host: 
+Authorization: Bearer Token
+Content-type: application/json
+```
+
+<h5>Request body -</h5>
+
+```
+EMPTY
+```
+
+<h5>Response example -</h5>
+
+``` 
+204 No Content
+```
+
+Possible errors:
+| Error code | Description |
+|----------------|-----------|
+| 401 Unauthorized | Invalid token |
+| 404 Not Found    | Comment not found |
+
+---
 
 
 
