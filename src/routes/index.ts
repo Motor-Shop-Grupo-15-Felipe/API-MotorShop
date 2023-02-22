@@ -5,7 +5,7 @@ import { usersRouter } from "./users/users.routes"
 import { routesComments } from "./comment/comments.routes"
 
 export const appRoutes = (app: Express) => {
-  app.use("/annoucements", routesAnnoucements())
+  app.use("/ads", routesAnnoucements())
   app.use("/users", usersRouter()),
   app.use("/login", sessionRouter()),
   app.use("/comment", routesComments())
