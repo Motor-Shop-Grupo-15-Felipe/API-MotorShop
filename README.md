@@ -2,7 +2,7 @@
 
 <h2>API documentation</h2
 
-<h1 id="top"> MAIN TECNOLOGIES AND FRAMEWORKS:</h1>
+ <h1 id="top"><b> MAIN TECNOLOGIES AND FRAMEWORKS:</b></h1>
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [NodeJS](https://nodejs.org/en/)
