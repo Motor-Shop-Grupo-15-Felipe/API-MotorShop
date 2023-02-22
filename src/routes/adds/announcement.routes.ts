@@ -14,7 +14,7 @@ export const routesAnnoucements = () => {
   routes.get("/", announcementsListController)
   routes.get("/:id", listAnnouncementByIdController)
   routes.patch("/:id", updateAnnouncementController)
-  routes.delete("/", announcementDeleteController)
+  routes.delete("/:id", announcementDeleteController)
 
   return routes
 }

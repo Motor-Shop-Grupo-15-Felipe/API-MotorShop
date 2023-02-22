@@ -7,7 +7,7 @@ import deleteCommentController from "../../controllers/comment/deleteComment.con
 const commentsRoutes = Router()
 
 export const routesComments = () => {
-  commentsRoutes.post("", createCommentController)
+  commentsRoutes.post("/", createCommentController)
   commentsRoutes.get("/users/:id", listCommentsController)
   commentsRoutes.patch("/:id", updateCommentController)
   commentsRoutes.delete("/:id", deleteCommentController)
