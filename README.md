@@ -160,7 +160,7 @@ Content-type: application/json
 ```
 ---
 
-### Possible Errors:
+Possible Errors:
 | Error code      | Description               |
 |-----------------|---------------------------|
 | 400 Bad Request | Email already being used  |
@@ -186,7 +186,7 @@ Content-type: application/json
 EMPTY
 ```
 
-<h4>Response example -</h4>
+<h5>Response example -</h5>
 
 ```
 200 OK
@@ -209,7 +209,7 @@ EMPTY
 ```
 ---
 
-### Possible Errors:
+Possible Errors:
 | Error code | Description |
 |----------------|-----------|
 | 401 Unauthorized | Invalid token |
@@ -223,7 +223,7 @@ EMPTY
 <h5>Request example -</h5>
 
 ```
-GET /users/9cda28c9-e540-4b2c-bf0c-c90006d37893
+GET /users/:id
 Host: 
 Authorization: Bearer Token
 Content-type: application/json
@@ -235,7 +235,7 @@ Content-type: application/json
 EMPTY
 ```
 
-<h4>Response example -</h4>
+<h5>Response example -</h5>
 
 ```
 200 OK
@@ -258,13 +258,130 @@ EMPTY
 ```
 ---
 
-###Possible Errors:
+Possible Errors:
 | Error code | Description |
 |----------------|-----------|
 | 401 Unauthorized | Invalid token  |
 | 404 Not Found    | User not found |
 
 ---
+
+<h4> Update User by ID - PATCH</h4>
+
+`/users/:id`
+
+<h5>Request example -</h5>
+
+```
+PATCH /users/:id
+Host: 
+Authorization: Bearer Token
+Content-type: application/json
+```
+
+<h5>Request body -</h5>
+<p>Being able to update parcially or all user's informations(except the user's ID or Email)</p>
+
+```json
+  { 
+       "phone": "0000000222",
+  }
+
+```
+
+<h5>Response example -</h5>
+
+```
+200 OK
+```
+
+```json
+[
+    {
+        "id": "xxxxxxx" (UUID),
+        "name": "Gabriella",
+        "email": "gabriellaTest@mail.com",
+        "phone": "0000000222",
+        "cpf" : "111.111.111.11"
+        "address" : ""
+        "date_of_birth": "11 / 11 / 1111"
+        "description" : "Hi! I'm Gabe and i..."
+        "createdAt": "Y/D/M TIME"
+    }
+]
+```
+---
+
+<h4>Delete User by ID - DELETE</h4>
+
+`/users/:id`
+
+<h5>Request example -</h5>
+
+```
+DELETE /users/:user_id
+Host: 
+Authorization: Bearer Token
+Content-type: application/json
+```
+
+<h5>Request body -</h5>
+
+```
+EMPTY
+```
+
+<h5>Response example -</h5>
+
+``` 
+204 No Content
+```
+
+<h4>LogIn - POST</h4>
+
+```/login```
+
+<h5>Request example -</h5>
+
+```
+POST /login
+Host: 
+Authorization: None
+Content-type: application/json
+```
+
+<h5>Request body -</h5>
+
+```json
+{
+    
+    "email": "gabriellaTest@mail.com",
+    "password": "test12345",
+}
+```
+
+<h5>Response example -</h5>
+
+```
+200 OK
+```
+
+```json
+{
+    "token": "eufghueuheujbjsdbjsfeieajlalala..."
+}
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
