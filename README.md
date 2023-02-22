@@ -1,4 +1,4 @@
-# API-MotorShop
+# MotorShop
 
 <h2>API documentation</h2
 
