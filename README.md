@@ -2,7 +2,7 @@
 
 <h2>API documentation</h2
 
-<h3>MAIN TECNOLOGIES AND FRAMEWORKS:</h3>
+## MAIN TECNOLOGIES AND FRAMEWORKS:
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [NodeJS](https://nodejs.org/en/)
