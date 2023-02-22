@@ -18,7 +18,7 @@ export const createCommentService = async (
   }
 
   if (description.length < 1) {
-    throw new AppError(404, "Make a comment")
+    throw new AppError(400, "Make a comment")
   }
 
   const newComment = commentRepository.create({
