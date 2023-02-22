@@ -853,4 +853,5 @@ Possible errors:
 
 ---
 
-<h3><a href="#top">Go back to the top </a></h3>
+<h3><a href="#top">Go back to the top of the page ![image](https://user-images.githubusercontent.com/102325601/220772940-c46126c9-3584-4ae8-97c5-0c000903848c.png)
+ </a></h3>
