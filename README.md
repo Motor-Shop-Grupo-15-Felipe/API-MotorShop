@@ -33,4 +33,4 @@
 <li>To run the server locally, execute the command "yarn dev"</li>
 </ul>
 
-[ Go back to the top of the page ](#MAIN TECNOLOGIES AND FRAMEWORKS)
+[ Go back to the top of the page ](#MAIN-TECNOLOGIES-AND-FRAMEWORKS)
