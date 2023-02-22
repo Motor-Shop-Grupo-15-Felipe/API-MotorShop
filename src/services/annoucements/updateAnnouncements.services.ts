@@ -1,7 +1,7 @@
-import { AppDataSource } from "../../data-source"
-import { Announcement } from "../../entities/announcement.entity"
-import { AppError } from "../../errors/appErros"
-import { IAnnouncementsRequest } from "../../interfaces/announcement"
+import { AppDataSource } from "../../data-source";
+import { Announcement } from "../../entities/announcement.entity";
+import { AppError } from "../../errors/appErros";
+import { IAnnouncementsRequest } from "../../interfaces/announcement";
 
 export const updateAnnouncement = async (
   {
@@ -17,14 +17,14 @@ export const updateAnnouncement = async (
   }: IAnnouncementsRequest,
   id: string
 ) => {
-  const announcementRepo = AppDataSource.getRepository(Announcement)
+  const announcementRepo = AppDataSource.getRepository(Announcement);
 
-  const findAnnouncement = await announcementRepo.findOneBy({ id })
+  const findAnnouncement = await announcementRepo.findOneBy({ id });
 
   // const imageRepo = AppDataSource.getRepository(Image)
 
   if (!findAnnouncement) {
-    throw new AppError(404, "Announcement not found")
+    throw new AppError(404, "Announcement not found");
   }
 
   await announcementRepo.update(id, {
@@ -38,7 +38,7 @@ export const updateAnnouncement = async (
     description: description ? description : findAnnouncement.description,
     vehicleType: vehicleType ? vehicleType : findAnnouncement.vehicleType,
     published: published ? published : findAnnouncement.published,
-  })
+  });
 
   // if (images) {
   //     for (let i = 0; i < images.length; i++){
@@ -62,7 +62,7 @@ export const updateAnnouncement = async (
   //     }
   // }
 
-  const announcementResponse = await announcementRepo.findOneBy({ id })
+  const announcementResponse = await announcementRepo.findOneBy({ id });
 
-  return announcementResponse
-}
+  return announcementResponse;
+};

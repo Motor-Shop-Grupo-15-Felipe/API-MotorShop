@@ -11,6 +11,7 @@ import { Comment } from "./comment.entity"
 import { Address } from "./address.entity"
 import { Exclude } from "class-transformer"
 import { v4 as uuidv4 } from "uuid"
+import { Announcement } from "./announcement.entity"
 
 @Entity("user")
 export class User {
@@ -56,6 +57,11 @@ export class User {
 
   @OneToMany((type) => Comment, (comment) => comment.user)
   comments: Comment[]
+
+  @ManyToOne((type) => Announcement, (announcement) => announcement.user, {
+    eager: true
+  })
+  announcements: Announcement[]  
 
   constructor() {
     if (!this.id) {

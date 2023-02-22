@@ -3,6 +3,7 @@ import "express-async-errors"
 import { appRoutes } from "./routes"
 import { errorMiddleware } from "./middlewares/errors.middleware"
 
+
 const app = express()
 app.use(express.json())
 appRoutes(app)

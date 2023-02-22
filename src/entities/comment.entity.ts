@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm"
-import { v4 as uuid } from "uuid"
+import { v4 as uuidv4 } from "uuid"
+import { Announcement } from "./announcement.entity"
 import { User } from "./users.entity"
 
 @Entity("comment")
@@ -20,9 +21,14 @@ export class Comment {
   })
   user: User
 
+  @ManyToOne((type) => Announcement, (announcement) => announcement.comments, {
+    eager: true
+  })
+  announcement: Announcement  
+
   constructor() {
     if (!this.id) {
-      this.id = uuid()
+      this.id = uuidv4()
     }
   }
 }

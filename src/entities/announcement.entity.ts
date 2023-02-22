@@ -5,8 +5,12 @@ import {
   CreateDateColumn,
   OneToMany,
   JoinTable,
+  ManyToOne
 } from "typeorm"
 import { v4 as uuidv4 } from "uuid"
+import { Comment } from "./comment.entity"
+import { Image } from "./image.entity"
+import { User } from "./users.entity"
 
 @Entity("announcement")
 export class Announcement {
@@ -63,14 +67,14 @@ export class Announcement {
   @Column({ default: true })
   isActive: boolean
 
-  // @OneToMany(() => Image, (image) => image.announcement, { eager: true })
-  // images: Image[]
+  @OneToMany(() => Image, (image) => image.announcement, { eager: true })
+  images: Image[]
 
-  // @ManyToOne(() => User, (user) => user.announcements)
-  // user: User
+  @ManyToOne(() => User, (user) => user.announcements)
+  user: User
 
-  // @OneToMany(() => Review, (review) => review.announcement, { eager: true })
-  // review: Review[]
+  @OneToMany(() => Comment, (comment) => comment.announcement, { eager: true })
+ comments: Comment[]
 
   constructor() {
     if (!this.id) {

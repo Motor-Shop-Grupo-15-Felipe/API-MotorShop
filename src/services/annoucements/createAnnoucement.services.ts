@@ -1,7 +1,8 @@
-import { AppDataSource } from "../../data-source"
-import { Announcement } from "../../entities/announcement.entity"
-import { IAnnouncement } from "../../interfaces/announcement"
-import { AppError } from "../../errors/appErros"
+import { AppDataSource } from "../../data-source";
+import { Announcement } from "../../entities/announcement.entity";
+import { IAnnouncement } from "../../interfaces/announcement";
+import { AppError } from "../../errors/appErros";
+import { prisma } from "../../utils/prisma";
 
 export const announcementCreateService = async ({
   announcementType,
@@ -14,31 +15,30 @@ export const announcementCreateService = async ({
   vehicleType,
   published,
   images,
-}: IAnnouncement): Promise<IAnnouncement> => {
-  const annoucementRepository = AppDataSource.getRepository(Announcement)
+}: IAnnouncement) => {
+  const annoucementRepository = prisma.announcement;
 
-  const annoucementExist = await annoucementRepository.findOne({
+  const annoucementExist = await annoucementRepository.findFirst({
     where: { plate },
-  })
+  });
 
   if (annoucementExist) {
-    throw new AppError(400, "Annoucement already exists, plate duplicate")
+    throw new AppError(400, "Annoucement already exists, plate duplicate");
   }
 
-  const newAnnoucement = new Announcement()
-  newAnnoucement.title = title
-  newAnnoucement.description = description
-  newAnnoucement.announcementType = announcementType
-  newAnnoucement.km = km
-  newAnnoucement.year = year
-  newAnnoucement.price = price
-  newAnnoucement.plate = plate
-  newAnnoucement.vehicleType = vehicleType
-  newAnnoucement.published = published
-  // newAnnoucement.images.push(images)
+  const newAnnoucement = await prisma.announcement.create({
+    data: {
+      title: title,
+      description: description,
+      announcementType: announcementType,
+      km: km,
+      year: year,
+      price: price,
+      plate: plate,
+      vehicleType: vehicleType,
+      published: published,
+    },
+  });
 
-  annoucementRepository.create(newAnnoucement)
-  await annoucementRepository.save(newAnnoucement)
-
-  return newAnnoucement
-}
+  return newAnnoucement;
+};

@@ -18,6 +18,7 @@ export const announcementCreateController = async (
       plate,
       published,
       announcementType,
+      images
     } = req.body
 
     const newAnnoucement = await announcementCreateService({
@@ -30,7 +31,7 @@ export const announcementCreateController = async (
       plate,
       published,
       announcementType,
-      // images
+      images
     })
 
     return res.status(201).send(instanceToPlain(newAnnoucement))
