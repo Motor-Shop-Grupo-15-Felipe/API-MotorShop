@@ -2,7 +2,7 @@
 
 <h2>API documentation</h2
 
-## MAIN TECNOLOGIES AND FRAMEWORKS
+## Tabela de Conteúdos
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [NodeJS](https://nodejs.org/en/)
@@ -853,22 +853,4 @@ Possible errors:
 
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[ Go back to the top of the page ](#main-tecnologies-and-frameworks)
+[ go back ](#tabela-de-conteúdos)
