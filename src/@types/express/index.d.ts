@@ -3,11 +3,10 @@ import * as express from "express"
 declare global {
   namespace Express {
     interface Request {
-      announcement: {
+      user: {
         id: string
-      }
-      user:{
-        id:string
+        isSeller: boolean
+        isActive: boolean
       }
     }
   }
