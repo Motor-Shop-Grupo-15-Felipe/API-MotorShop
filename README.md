@@ -166,6 +166,7 @@ Possible Errors:
 | Error code      | Description               |
 |-----------------|---------------------------|
 | 400 Bad Request | Email already being used  |
+| 400 Bad Request | CPF already exists  |
 
 ---
 
