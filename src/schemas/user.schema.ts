@@ -6,7 +6,7 @@ import { IUserRequest } from "../interfaces/user"
 
 YupPassword(yup)
 
-export const userSchema: SchemaOf<IUserRequest> = yup.object().shape({
+export const userSchema = yup.object().shape({
   name: yup.string().required(),
   email: yup.string().email().required(),
   cpf: yup.string().min(11).max(11).required(),
@@ -16,6 +16,16 @@ export const userSchema: SchemaOf<IUserRequest> = yup.object().shape({
     // .minUppercase(1, "A senha deve conter pelo menos uma letra maiúscula!")
     // .minNumbers(1, "A senha deve conter pelo menos um número!")
     .required(),
+  
+  address: yup.object().shape({
+    street: yup.string(),
+    number: yup.string(),
+    complement: yup.string(),
+    cep: yup.string(),
+    city: yup.string(),
+    state: yup.string()
+  }),
+
   birthDate: yup.string(),
   phone: yup.string(),
   image: yup.string(),

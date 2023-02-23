@@ -3,6 +3,7 @@ export interface IReqCreateVehicle {
     price: string;
     images: string[];
     km: number;
+    plate: string;
     year: string;
     title: string;
     description: string;

@@ -25,6 +25,12 @@ export class Vehicle {
     @Column()
     km: number;
 
+    @Column({
+        unique: true,
+        length: 7
+    })
+    plate: string;
+
     @Column({ length: 4 })
     year: string;
 
