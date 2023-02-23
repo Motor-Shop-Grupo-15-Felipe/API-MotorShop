@@ -5,6 +5,8 @@ import vehicleListIdService from '../../services/vehicles/listVehicleId';
 
 import { listVehicleService } from '../../services/vehicles/listVehicles';
 import { User } from '../../entities/user.entity';
+import updateVehicleService, { IUpdateVehicle } from '../../services/vehicles/updateVehicle';
+import deleteVehicleService from '../../services/vehicles/deleteVehicle';
 
 interface ICreateVehicle {
     userId: string;
@@ -40,3 +42,29 @@ export const vehicleListVehicleIdController = async (
     const vehicle = await vehicleListIdService(vehicleId);
     return res.status(200).json(vehicle);
 };
+
+export const vehicleUpdateController = async(
+    req: Request,
+    res: Response
+) => {
+    const vehicleId: string = req.params.vehicleId;
+    const data: IUpdateVehicle = req.body
+
+    const vehicleUp = await updateVehicleService(vehicleId, data)
+
+    return res.status(201).json(vehicleUp)
+}
+
+export const vehicleDeleteController = async(
+    req: Request,
+    res: Response
+) => {
+    const vehicleId: string = req.params.vehicleId
+
+    const softDelete = await deleteVehicleService(vehicleId)
+
+    return res.status(204).send({
+        softDelete
+    })
+
+}
