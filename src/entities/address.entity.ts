@@ -1,37 +1,29 @@
-import { PrimaryGeneratedColumn, Column, Entity, OneToMany } from "typeorm"
-import { User } from "./users.entity"
-import { v4 as uuidv4 } from "uuid"
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from "typeorm"
+import { User } from "./user.entity"
 
-@Entity("address")
+@Entity("addresses")
 export class Address {
   @PrimaryGeneratedColumn("uuid")
-  id: string
+  readonly id: string
 
-  @Column()
+  @Column({ length: 15 })
   state: string
 
-  @Column()
+  @Column({ length: 50 })
   city: string
 
-  @Column()
-  district: string
+  @Column({ length: 9 })
+  cep: string
 
-  @Column()
-  complement: string
+  @Column({ length: 50 })
+  street: string
 
-  @Column()
-  zipCode: string
+  @Column({ length: 50, nullable: true })
+  number?: string
 
-  @Column()
-  number: number
+  @Column({ length: 50, nullable: true })
+  complement?: string
 
-  @OneToMany((type) => User, (user) => user.address)
-  user: User[]
-
-  constructor() {
-    if (!this.id) {
-      this.id = uuidv4()
-    }
-  }
-
+  @OneToOne(() => User, (user) => user.address, { eager: true })
+  user: User
 }

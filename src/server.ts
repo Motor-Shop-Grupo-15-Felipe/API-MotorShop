@@ -1,9 +1,16 @@
-import app from "./app"
-import { AppDataSource } from "./data-source"
-  
+import app from './app';
+import AppDataSource from './data-source';
 
-app.listen(3000, () => {
-  console.log("Running at http://localhost:3000")
-}
-)
+(async () => {
+    await AppDataSource.initialize()
+        .then(() => console.log('Data Source has been initialized!'))
+        .catch((err) => {
+            console.error('Error during Data Source initialization', err);
+        });
 
+    const port = process.env.PORT || 3000;
+
+    app.listen(port, () => {
+        console.log(`Servidor executando na porta ${port}!`);
+    });
+})();

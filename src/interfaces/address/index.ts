@@ -1,14 +1,8 @@
-export interface IAddressUpdate {
+export interface IAddressRequest {
+  street: string
+  number?: string
   complement?: string
-  zipCode?: string
-  number?: number
-}
-
-export interface IAddress {
-  state: string
+  cep: string
   city: string
-  district: string
-  complement: string
-  zipCode: string
-  number: number
+  state: string
 }

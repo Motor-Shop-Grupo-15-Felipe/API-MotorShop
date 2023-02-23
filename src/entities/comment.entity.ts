@@ -1,34 +1,28 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm"
-import { v4 as uuidv4 } from "uuid"
-import { Announcement } from "./announcement.entity"
-import { User } from "./users.entity"
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  CreateDateColumn,
+} from "typeorm";
 
-@Entity("comment")
+import { User } from "./user.entity";
+import { Vehicle } from "./vehicle.entity";
+
+@Entity("comments")
 export class Comment {
-  @PrimaryColumn("uuid")
-  readonly id: string
-
-  @Column({
-    length: 250
-  })
-  description: string
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column()
-  tags: string
+  comment: string;
 
-  @ManyToOne((type) => User, (user) => user.comments, {
-    eager: true,
-  })
-  user: User
+  @CreateDateColumn()
+  dateCreated: Date;
 
-  @ManyToOne((type) => Announcement, (announcement) => announcement.comments, {
-    eager: true
-  })
-  announcement: Announcement  
+  @ManyToOne(() => Vehicle, (vehicle) => vehicle.comments)
+  vehicle: Vehicle;
 
-  constructor() {
-    if (!this.id) {
-      this.id = uuidv4()
-    }
-  }
+  @ManyToOne(() => User, (user) => user.comments, { eager: true })
+  user: User;
 }

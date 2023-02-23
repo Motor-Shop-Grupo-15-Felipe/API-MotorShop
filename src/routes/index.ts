@@ -1,12 +1,15 @@
 import { Express } from "express"
-import { routesAnnoucements } from "./adds/announcement.routes"
-import { sessionRouter } from "./sessions/sessions.routes"
-import { usersRouter } from "./users/users.routes"
-import { routesComments } from "./comment/comments.routes"
+
+import { usersRoutes } from "./users.routes"
+import { loginRoutes } from "./login.routes"
+import { vehiclesRoutes } from "./vehicles.routes"
+import { commentsRoutes } from "./comments.routes"
+import { recoveryPasswordRoutes } from "./recoveryPassword.routes"
 
 export const appRoutes = (app: Express) => {
-  app.use("/ads", routesAnnoucements())
-  app.use("/users", usersRouter()),
-  app.use("/login", sessionRouter()),
-  app.use("/comment", routesComments())
+  app.use("/users", usersRoutes())
+  app.use("/ads", vehiclesRoutes())
+  app.use("/login", loginRoutes())
+  app.use("/recovery-password", recoveryPasswordRoutes())
+  app.use("/comments", commentsRoutes())
 }
