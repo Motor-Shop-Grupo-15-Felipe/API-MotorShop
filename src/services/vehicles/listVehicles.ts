@@ -21,7 +21,7 @@ export const listVehicleService = async () => {
     }
     )
 
-    const carros = vehiclesResp.filter((vehicle) => vehicle.type === 'car');
+    const carros = vehiclesResp.filter((vehicle) => vehicle.type === 'carro');
     const motos = vehicles.filter((vehicle) => vehicle.type === 'moto');
 
     return {carros, motos};

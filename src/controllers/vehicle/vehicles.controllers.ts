@@ -25,7 +25,7 @@ export const createVehicleController = async (req: Request, res: Response) => {
     const data: IReqCreateVehicle = req.body;
     const userId = req.params.userId;
     data.userId = userId;
-    const response = await createVehicleService(data as ICreateVehicle);
+    const response = await createVehicleService(data as unknown as ICreateVehicle);
     return res.status(201).json(response);
 };
 
