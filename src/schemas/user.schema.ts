@@ -1,7 +1,7 @@
 import * as yup from "yup"
 import YupPassword from "yup-password"
 
-import { SchemaOf } from "yup"
+import { Schema } from "yup"
 import { IUserRequest } from "../interfaces/user"
 
 YupPassword(yup)

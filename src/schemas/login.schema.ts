@@ -1,12 +1,12 @@
 import * as yup from "yup"
 import YupPassword from "yup-password"
 
-import { SchemaOf } from "yup"
+import { Schema } from "yup"
 import { IUserLogin } from "../interfaces/user"
 
 YupPassword(yup)
 
-export const loginSchema: SchemaOf<IUserLogin> = yup.object().shape({
+export const loginSchema: Schema<IUserLogin> = yup.object().shape({
   email: yup
     .string()
     .email()
