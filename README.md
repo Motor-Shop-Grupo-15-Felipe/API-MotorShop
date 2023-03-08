@@ -43,7 +43,7 @@ yarn typeorm migration:run -d src/data-source.ts
 <li>To run the server locally, and execute the command</li>
  
  ```shell
-yarn dev
+yarn start
 ```
  
 </ul>
