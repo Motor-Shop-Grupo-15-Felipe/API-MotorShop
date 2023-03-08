@@ -87,16 +87,6 @@ yarn start
   <li>DELETE - /comment/:id</li>
   </ul>
 </details>
-<details>
-<summary>IMAGES</summary>
-  <ul>
-  <li>POST - /</li>
-  <li>GET - /</li>
-  <li>GET - //:id</li>
-  <li>PATCH - //:id</li>
-  <li>DELETE - //:id</li>
-  </ul>
-</details>
 
 ---
 
@@ -134,7 +124,11 @@ Content-type: application/json
     "email": "gabriellaTest@mail.com",
     "phone": "000000000",
     "cpf" : "111.111.111.11"
-    "address" : ""
+    "address" : {
+        "cep" : "800-856-50"
+        "number" : "111"
+        "complement": "Apt 05"
+    }
     "date_of_birth": "11 / 11 / 1111"
     "description" : "Hi! I'm Gabe and i..."
     "password": "test12345",
@@ -154,7 +148,14 @@ Content-type: application/json
     "email": "gabriellaTest@mail.com",
     "phone": "000000000",
     "cpf" : "111.111.111.11"
-    "address" : ""
+    "address" : {
+        "cep" : "800-856-50",
+        "number" : "111",
+        "complement": "Apt 05",
+        "state" : "Paraná",
+        "street" : "Kenzie",
+        "citty" : "Curitiba"
+    }
     "date_of_birth": "11 / 11 / 1111"
     "description" : "Hi! I'm Gabe and i..."
     "createdAt": "Y/D/M TIME"
@@ -203,7 +204,14 @@ EMPTY
         "email": "gabriellaTest@mail.com",
         "phone": "000000000",
         "cpf" : "111.111.111.11"
-        "address" : ""
+       "address" : {
+              "cep" : "800-856-50",
+              "number" : "111",
+              "complement": "Apt 05",
+              "state" : "Paraná",
+              "street" : "Kenzie",
+              "citty" : "Curitiba"
+            }
         "date_of_birth": "11 / 11 / 1111"
         "description" : "Hi! I'm Gabe and i..."
         "createdAt": "Y/D/M TIME"
@@ -251,7 +259,14 @@ EMPTY
         "email": "gabriellaTest@mail.com",
         "phone": "000000000",
         "cpf" : "111.111.111.11"
-        "address" : ""
+        "address" : {
+              "cep" : "800-856-50",
+              "number" : "111",
+              "complement": "Apt 05",
+              "state" : "Paraná",
+              "street" : "Kenzie",
+              "citty" : "Curitiba"
+          }
         "date_of_birth": "11 / 11 / 1111"
         "description" : "Hi! I'm Gabe and i..."
         "createdAt": "Y/D/M TIME"
@@ -304,7 +319,14 @@ Content-type: application/json
         "email": "gabriellaTest@mail.com",
         "phone": "0000000222",
         "cpf" : "111.111.111.11"
-        "address" : ""
+        "address" : {
+              "cep" : "800-856-50",
+              "number" : "111",
+              "complement": "Apt 05",
+              "state" : "Paraná",
+              "street" : "Kenzie",
+              "citty" : "Curitiba"
+          }
         "date_of_birth": "11 / 11 / 1111"
         "description" : "Hi! I'm Gabe and i..."
         "createdAt": "Y/D/M TIME"
